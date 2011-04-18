@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="petStoreDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+		<property name="url" value="jdbc:hsqldb:mem:mymemdb"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+	</bean>
+	
+	<bean id="petStoreSessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="petStoreDataSource"/>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.HSQLDialect
+				hibernate.hbm2ddl.auto=create-drop
+			</value>
+		</property>
+		<property name="packagesToScan" value="net.caimito.courseware.petstore"/>
+	</bean>
+	
+	<bean id="petStore" class="net.caimito.courseware.petstore.PetStore">
+		<property name="sessionFactory" ref="petStoreSessionFactory"/>
+	</bean>
+	
+</beans>
