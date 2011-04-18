@@ -6,12 +6,41 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name=Pet.TABLE_NAME)
+@Table(name = Pet.TABLE_NAME)
 public class Pet {
-	
-	public static final String TABLE_NAME = "pets" ;
+
+	public static final String TABLE_NAME = "pets";
 
 	@Id
 	@GeneratedValue
-	private Long id ;
+	private Long id;
+
+	private String petName;
+	private String petBreed;
+	private double petPrice;
+
+	public String getPetName() {
+		return petName;
+	}
+
+	public void setPetName(String petName) {
+		this.petName = petName;
+	}
+
+	public String getPetBreed() {
+		return petBreed;
+	}
+
+	public void setPetBreed(String petBreed) {
+		this.petBreed = petBreed;
+	}
+
+	public double getPetPrice() {
+		return petPrice;
+	}
+
+	public void setPetPrice(double petPrice) {
+		this.petPrice = petPrice;
+	}
+
 }

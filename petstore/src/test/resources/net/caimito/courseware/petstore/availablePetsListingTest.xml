@@ -25,4 +25,8 @@
 		<property name="sessionFactory" ref="petStoreSessionFactory"/>
 	</bean>
 	
+	<bean id="petStoreFixtures" class="net.caimito.courseware.petstore.fixtures.PetStoreFixtures" init-method="storePetsInventory">
+		<property name="sessionFactory" ref="petStoreSessionFactory"/>
+	</bean>
+	
 </beans>
