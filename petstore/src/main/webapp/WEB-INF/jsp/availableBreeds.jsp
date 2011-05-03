@@ -8,7 +8,7 @@
 	
 	<table>
 	<tr>
-		<th>Breed</th>
+		<th>Breed (<a href="availableBreedsSorted?order=ASC">ASC</a>, <a href="availableBreedsSorted?order=DESC">DESC</a>)</th>
 	</tr>
 	<c:forEach items="${breeds}" varStatus="loop">
 		<tr>

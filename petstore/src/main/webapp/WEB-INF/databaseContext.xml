@@ -21,4 +21,7 @@
 		<property name="packagesToScan" value="net.caimito.courseware.petstore"/>
 	</bean>
 	
+	<bean id="petRepository" class="net.caimito.courseware.petstore.PetRepositoryImpl">
+		<property name="sessionFactory" ref="petStoreSessionFactory"/>
+	</bean>
 </beans>
