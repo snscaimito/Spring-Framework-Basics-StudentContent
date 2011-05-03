@@ -4,7 +4,10 @@
 </head>
 <body>
 
-	<a href="availablePets">Available Pets</a>
+	<ul>
+		<li><a href="availablePets">Available Pets</a></li>
+		<li><a href="availableBreeds">Available Breeds</a></li>
+	</ul>
 
 </body>
 </html>

@@ -13,6 +13,13 @@ public class PetStoreFixtures extends HibernateDaoSupport {
 		germanShepherd.setPetPrice(650.00) ;
 		
 		getHibernateTemplate().save(germanShepherd) ;
+
+		Pet rottweiler = new Pet() ;
+		rottweiler.setPetName("Big Boy") ;
+		rottweiler.setPetBreed("Rottweiler") ;
+		rottweiler.setPetPrice(475.00) ;
+		
+		getHibernateTemplate().save(rottweiler) ;
 	}
 
 }

@@ -10,4 +10,8 @@ public class PetStore extends HibernateDaoSupport {
 		return getHibernateTemplate().find("from Pet") ;
 	}
 
+	public Collection<String> getAvailablePetBreeds() {
+		return getHibernateTemplate().find("select p.petBreed from Pet p");
+	}
+
 }

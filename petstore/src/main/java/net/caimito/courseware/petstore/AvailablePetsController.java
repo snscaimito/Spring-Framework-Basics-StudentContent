@@ -18,5 +18,13 @@ public class AvailablePetsController {
 		mav.addObject("pets", petStore.getAvailablePets()) ;
 		return mav;
 	}
-	
+
+	@RequestMapping("/availableBreeds")
+	public ModelAndView availableBreeds() {
+		ModelAndView mav = new ModelAndView() ;
+		mav.setViewName("availableBreeds") ;
+		mav.addObject("breeds", petStore.getAvailablePetBreeds()) ;
+		return mav;
+	}
+
 }
