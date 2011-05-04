@@ -10,4 +10,6 @@ public interface PetRepository {
 
 	public Collection<String> findAvailablePetBreedsSorted(SortOrder sortOrder) ;
 
+	public void store(Pet pet);
+
 }

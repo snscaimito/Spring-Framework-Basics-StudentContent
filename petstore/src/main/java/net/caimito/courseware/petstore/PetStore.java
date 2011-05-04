@@ -25,4 +25,8 @@ public class PetStore {
 		this.petRepository = petRepository ;
 	}
 
+	public void addPet(Pet pet) {
+		petRepository.store(pet) ;
+	}
+
 }
