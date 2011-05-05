@@ -76,6 +76,7 @@ public class JmsInventoryAgentReceiver implements MessageListener {
 				return session.createTextMessage("Pet is available: <missing pet name>") ;
 			}
 		}) ;
+		
 	}
 
 }

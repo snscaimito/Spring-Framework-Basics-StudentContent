@@ -17,6 +17,7 @@ public class FakePetStore implements PetStore {
 	}
 
 	public Collection<String> getAvailablePetBreeds() {
+
 		return null;
 	}
 
@@ -37,6 +38,7 @@ public class FakePetStore implements PetStore {
 	}
 
 	public void updatePet(Pet pet) {
+
 	}
 
 }

@@ -46,6 +46,7 @@ public class PetStoreControllerTest {
 		
 		PetStore petStore = new PetStoreImpl() ;
 		((PetStoreImpl)petStore).setPetRepository(petRepository) ;
+
 		
 		PetStoreController controller = new PetStoreController() ;
 		controller.setPetStore(petStore) ;
