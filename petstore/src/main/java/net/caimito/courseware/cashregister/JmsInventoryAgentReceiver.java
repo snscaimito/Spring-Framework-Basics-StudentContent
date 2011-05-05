@@ -5,12 +5,15 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.Queue;
+import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import net.caimito.courseware.petstore.PetStore;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 
 public class JmsInventoryAgentReceiver implements MessageListener {
 
@@ -19,6 +22,7 @@ public class JmsInventoryAgentReceiver implements MessageListener {
 	private ConnectionFactory connectionFactory ;
 	private Queue answerQueue ;
 	private InventoryAgent inventoryAgent ;
+	private JmsTemplate jmsTemplate ;
 	
 	public void setPetStore(PetStore petStore) {
 		this.petStore = petStore;
@@ -26,6 +30,7 @@ public class JmsInventoryAgentReceiver implements MessageListener {
 	
 	public void setConnectionFactory(ConnectionFactory connectionFactory) {
 		this.connectionFactory = connectionFactory;
+		jmsTemplate = new JmsTemplate(connectionFactory) ;
 	}
 	
 	public void setAnswerQueue(Queue answerQueue) {
@@ -55,13 +60,22 @@ public class JmsInventoryAgentReceiver implements MessageListener {
 	}
 
 	private void processAvailabilityAnswer(String messageContent) {
-		// TODO Auto-generated method stub
+		logger.info("Processing answer") ;
+		logger.info("Answer was: " + messageContent) ;
 		
+		inventoryAgent.setAvailable("Harro") ;
 	}
 
 	private void processAvailabilityRequest(String messageContent) {
-		// TODO Auto-generated method stub
+		logger.info(String.format("Received request: %s", messageContent)) ;
+		logger.info("Faking availability") ;
 		
+		jmsTemplate.send(answerQueue, new MessageCreator() {
+			
+			public Message createMessage(Session session) throws JMSException {
+				return session.createTextMessage("Pet is available: <missing pet name>") ;
+			}
+		}) ;
 	}
 
 }

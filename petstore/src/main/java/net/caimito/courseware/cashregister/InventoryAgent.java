@@ -12,4 +12,6 @@ public interface InventoryAgent {
 
 	public void removeFromInventory(Collection<String> petNames);
 
+	public void setAvailable(String petName);
+
 }
