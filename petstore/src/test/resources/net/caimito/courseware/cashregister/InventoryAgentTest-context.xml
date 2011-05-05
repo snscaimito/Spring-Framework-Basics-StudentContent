@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.3.0.xsd">
+
+	<amq:broker useJmx="false" persistent="false">
+		<amq:transportConnectors>
+			<amq:transportConnector uri="vm://localhost"/>
+		</amq:transportConnectors>
+	</amq:broker>
+
+	<amq:connectionFactory id="connectionFactory" brokerURL="vm://localhost"/>
+	
+	<amq:queue id="requests" physicalName="net.caimito.courseware.petstore.requests"/>
+	<amq:queue id="answers" physicalName="net.caimito.courseware.petstore.answers"/>
+	
+	<bean id="requestJmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="destination" ref="requests"/>
+		<property name="messageListener" ref="requestListener"/>
+	</bean>
+	
+	<bean id="requestListener" class="net.caimito.courseware.cashregister.JmsInventoryAgentReceiver">
+		<property name="petStore" ref="fakePetStore"/>
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="answerQueue" ref="answers"/>
+	</bean>
+	
+	<bean id="answerJmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="destination" ref="answers"/>
+		<property name="messageListener" ref="answerListener"/>
+	</bean>
+	
+	<bean id="answerListener" class="net.caimito.courseware.cashregister.JmsInventoryAgentReceiver">
+		<property name="petStore" ref="fakePetStore"/>
+		<property name="inventoryAgent" ref="inventoryAgent"/>
+	</bean>
+	
+	<bean id="inventoryAgent" class="net.caimito.courseware.cashregister.JmsInventoryAgent">
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="requestQueue" ref="requests"/>
+	</bean>
+	
+	<bean id="fakePetStore" class="net.caimito.courseware.cashregister.FakePetStore"/>
+</beans>

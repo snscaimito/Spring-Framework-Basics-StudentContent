@@ -2,41 +2,21 @@ package net.caimito.courseware.petstore;
 
 import java.util.Collection;
 
-import javax.swing.RepaintManager;
+public interface PetStore {
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+	public abstract Collection<Pet> getAvailablePets();
 
-public class PetStore {
+	public abstract Collection<String> getAvailablePetBreeds();
 
-	private PetRepository petRepository ;
+	public abstract Collection<String> getAvailablePetBreedsSorted(
+			SortOrder sortOrder);
+
+	public abstract void addPet(Pet pet);
+
+	public abstract Pet findPet(Long id);
 	
-	public Collection<Pet> getAvailablePets() {
-		return petRepository.findAvailablePets() ;
-	}
+	public abstract Pet findPetByName(String petName) ;
 
-	public Collection<String> getAvailablePetBreeds() {
-		return petRepository.findAvailablePetBreeds() ;
-	}
-
-	public Collection<String> getAvailablePetBreedsSorted(SortOrder sortOrder) {
-		return petRepository.findAvailablePetBreedsSorted(sortOrder) ;
-	}
-
-	public void setPetRepository(PetRepository petRepository) {
-		this.petRepository = petRepository ;
-	}
-
-	public void addPet(Pet pet) {
-		petRepository.store(pet) ;
-	}
-
-	public Pet findPet(Long id) {
-		return petRepository.findPet(id) ;
-	}
-
-	public void updatePet(Pet pet) {
-		petRepository.updatePet(pet) ;
-	}
+	public abstract void updatePet(Pet pet);
 
 }

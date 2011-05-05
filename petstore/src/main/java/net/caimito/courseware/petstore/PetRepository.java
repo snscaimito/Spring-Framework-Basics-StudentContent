@@ -16,4 +16,6 @@ public interface PetRepository {
 
 	public void updatePet(Pet pet);
 
+	public Pet findPetByName(String petName);
+
 }

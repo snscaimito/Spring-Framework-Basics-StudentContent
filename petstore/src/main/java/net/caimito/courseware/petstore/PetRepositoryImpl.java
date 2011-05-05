@@ -1,6 +1,7 @@
 package net.caimito.courseware.petstore;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -31,6 +32,14 @@ public class PetRepositoryImpl extends HibernateDaoSupport implements PetReposit
 
 	public void updatePet(Pet pet) {
 		getHibernateTemplate().saveOrUpdate(pet) ;
+	}
+
+	public Pet findPetByName(String petName) {
+		List<Pet> pets = getHibernateTemplate().find("from Pet p where p.petName=?", petName) ;
+		if (pets.isEmpty())
+			return null ;
+		else
+			return pets.get(0) ;
 	}
 
 }
