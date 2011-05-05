@@ -12,4 +12,8 @@ public interface PetRepository {
 
 	public void store(Pet pet);
 
+	public Pet findPet(Long id);
+
+	public void updatePet(Pet pet);
+
 }

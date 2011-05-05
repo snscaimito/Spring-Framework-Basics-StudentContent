@@ -14,7 +14,7 @@
 	</tr>
 	<c:forEach items="${pets}" varStatus="loop">
 		<tr>
-			<td>${pets[loop.index].petName}</td>
+			<td><a href="updatePet?id=${pets[loop.index].id}">${pets[loop.index].petName}</a></td>
 			<td>${pets[loop.index].petBreed}</td>
 			<td>${pets[loop.index].petPrice}</td>
 		</tr>

@@ -2,6 +2,8 @@ package net.caimito.courseware.petstore;
 
 import java.util.Collection;
 
+import javax.swing.RepaintManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -27,6 +29,14 @@ public class PetStore {
 
 	public void addPet(Pet pet) {
 		petRepository.store(pet) ;
+	}
+
+	public Pet findPet(Long id) {
+		return petRepository.findPet(id) ;
+	}
+
+	public void updatePet(Pet pet) {
+		petRepository.updatePet(pet) ;
 	}
 
 }

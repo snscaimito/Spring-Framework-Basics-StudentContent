@@ -42,5 +42,13 @@ public class Pet {
 	public void setPetPrice(double petPrice) {
 		this.petPrice = petPrice;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }
