@@ -25,7 +25,7 @@
 		<property name="sessionFactory" ref="petStoreSessionFactory"/>
 	</bean>
 	
-	<bean id="petStore" class="net.caimito.courseware.petstore.PetStore">
+	<bean id="petStore" class="net.caimito.courseware.petstore.PetStoreImpl">
 		<property name="petRepository" ref="petRepository"/>
 	</bean>
 	

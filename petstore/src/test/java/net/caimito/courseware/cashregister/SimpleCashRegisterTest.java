@@ -5,11 +5,11 @@ import net.caimito.courseware.petstore.fixtures.PetStoreFixtures;
 
 import org.junit.Test;
 
-public class CashRegisterTest {
+public class SimpleCashRegisterTest {
 
 	@Test
 	public void sellPet() {
-		CashRegister cashRegister = new CashRegister() ;
+		SimpleCashRegister cashRegister = new SimpleCashRegister() ;
 		
 		cashRegister.sell(PetStoreFixtures.getGermanShepherd().getPetName(), PetStoreFixtures.getGermanShepherd().getPetPrice()) ;
 		cashRegister.sell(PetStoreFixtures.getWhiteRabbit().getPetName(), PetStoreFixtures.getWhiteRabbit().getPetPrice()) ;

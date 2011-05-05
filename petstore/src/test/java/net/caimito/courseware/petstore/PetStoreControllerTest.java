@@ -22,7 +22,7 @@ public class PetStoreControllerTest {
 		expect(petRepository.findAvailablePetBreedsSorted(SortOrder.ASCENDING)).andReturn(petBreeds) ;
 		replay(petRepository) ;
 		
-		PetStore petStore = new PetStore() ;
+		PetStore petStore = new PetStoreImpl() ;
 		petStore.setPetRepository(petRepository) ;
 		
 		PetStoreController controller = new PetStoreController() ;
@@ -44,7 +44,7 @@ public class PetStoreControllerTest {
 		expect(petRepository.findAvailablePetBreedsSorted(SortOrder.DECENDING)).andReturn(petBreeds) ;
 		replay(petRepository) ;
 		
-		PetStore petStore = new PetStore() ;
+		PetStore petStore = new PetStoreImpl() ;
 		petStore.setPetRepository(petRepository) ;
 		
 		PetStoreController controller = new PetStoreController() ;
