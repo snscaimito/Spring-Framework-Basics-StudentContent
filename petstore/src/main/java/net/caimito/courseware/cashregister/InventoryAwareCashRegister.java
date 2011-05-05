@@ -3,13 +3,23 @@ package net.caimito.courseware.cashregister;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InventoryAwareCashRegister implements CashRegister {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 
+public class InventoryAwareCashRegister implements CashRegister, InitializingBean {
+
+	private static Logger logger = LoggerFactory.getLogger(InventoryAwareCashRegister.class) ;
 	private Map<String, Double> pets = new HashMap<String, Double>() ;
 	private double cashInRegister = 0.0 ;
 	
 	private InventoryAgent inventoryAgent ;
 	
+	public void afterPropertiesSet() throws Exception {
+		if (inventoryAgent == null)
+			logger.error("Need an instance of Inventory Agent") ;
+	}
+
 	public void sell(String petName, double petPrice) {
 		inventoryAgent.inquireAvailability(petName) ;
 		
