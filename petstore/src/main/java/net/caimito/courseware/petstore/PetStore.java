@@ -1,22 +1,25 @@
 package net.caimito.courseware.petstore;
 
+import java.util.Calendar;
 import java.util.Collection;
 
 public interface PetStore {
 
-	public abstract Collection<Pet> getAvailablePets();
+	public Collection<Pet> getAvailablePets();
 
-	public abstract Collection<String> getAvailablePetBreeds();
+	public Collection<String> getAvailablePetBreeds();
 
-	public abstract Collection<String> getAvailablePetBreedsSorted(
+	public Collection<String> getAvailablePetBreedsSorted(
 			SortOrder sortOrder);
 
-	public abstract void addPet(Pet pet);
+	public void addPet(Pet pet);
 
-	public abstract Pet findPet(Long id);
+	public Pet findPet(Long id);
 	
-	public abstract Pet findPetByName(String petName) ;
+	public Pet findPetByName(String petName) ;
 
-	public abstract void updatePet(Pet pet);
+	public void updatePet(Pet pet);
+
+	public Collection<Pet> findPetsScheduledForPickup(Calendar today);
 
 }

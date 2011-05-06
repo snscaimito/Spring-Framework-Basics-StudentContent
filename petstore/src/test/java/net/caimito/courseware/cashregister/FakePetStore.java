@@ -1,5 +1,6 @@
 package net.caimito.courseware.cashregister;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,6 +40,11 @@ public class FakePetStore implements PetStore {
 
 	public void updatePet(Pet pet) {
 
+	}
+
+	public Collection<Pet> findPetsScheduledForPickup(Calendar today) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

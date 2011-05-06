@@ -28,17 +28,17 @@ public class SimpleShoppingCart implements ShoppingCart {
 	}
 
 	private void sendConfirmation(Customer customer) {
-		String messagePartOne = "Dear " + customer.getName() + ", thank you for placing your order. \r\n" ;
+		String messagePartOne = "Dear " + customer.getCustomerName() + ", thank you for placing your order. \r\n" ;
 		String messagePartTwo = String.format("The pet %s will be waiting for you to pick it up", pet.getPetName()) ;
 		
 		SimpleMailMessage msg = new SimpleMailMessage(templateMessage) ;
-		msg.setTo(customer.getEmail()) ;
+		msg.setTo(customer.getCustomerEmail()) ;
 		msg.setText(messagePartOne + "\r\n" + messagePartTwo) ;
 		
 		try {
 			mailSender.send(msg) ;
 		} catch (MailException e) {
-			throw new PetStoreException("Cannot email to " + customer.getEmail(), e) ;
+			throw new PetStoreException("Cannot email to " + customer.getCustomerEmail(), e) ;
 		}
 	}
 

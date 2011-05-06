@@ -3,6 +3,7 @@ package net.caimito.courseware.petstore;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +19,9 @@ public class Pet {
 	private String petName;
 	private String petBreed;
 	private double petPrice;
+	
+	@OneToOne
+	private Customer customer ;
 
 	public String getPetName() {
 		return petName;
@@ -49,6 +53,14 @@ public class Pet {
 	
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer ;
 	}
 
 }

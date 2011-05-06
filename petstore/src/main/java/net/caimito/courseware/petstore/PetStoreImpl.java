@@ -1,5 +1,6 @@
 package net.caimito.courseware.petstore;
 
+import java.util.Calendar;
 import java.util.Collection;
 
 public class PetStoreImpl implements PetStore {
@@ -36,6 +37,11 @@ public class PetStoreImpl implements PetStore {
 
 	public Pet findPetByName(String petName) {
 		return petRepository.findPetByName(petName);
+	}
+
+	public Collection<Pet> findPetsScheduledForPickup(Calendar today) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
