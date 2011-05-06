@@ -38,7 +38,7 @@ public class SimpleShoppingCart implements ShoppingCart {
 		try {
 			mailSender.send(msg) ;
 		} catch (MailException e) {
-			logger.error("Cannot send email to " + customer.getEmail(), e) ;
+			throw new PetStoreException("Cannot email to " + customer.getEmail(), e) ;
 		}
 	}
 
